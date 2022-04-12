@@ -7,11 +7,12 @@ from stats import Stats
 import varibbles
 
 
-def run():
+if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode(varibbles.WINDOW_SIZE)
     pygame.display.set_caption("Star Ido Wars")
     bg_color = varibbles.WHITE
+    pygame.draw.line(screen, (0, 0, 0), (0, 10), (700, 10), width=1)
     hero = Hero(screen)
     bullets = Group()
     aliens = Group()
@@ -29,6 +30,3 @@ def run():
             controls.update(bg_color, screen, stats, sc, hero, aliens, bullets)
             controls.disappearing_bullets(screen, stats, sc, aliens, bullets)
             controls.update_aliens(stats, screen, sc, hero, aliens, bullets)
-
-
-run()

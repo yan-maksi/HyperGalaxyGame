@@ -142,6 +142,7 @@ def create_army(screen, aliens):
             # add a group of aliens to the screen
             aliens.add(alien)
 
+
 def chek_hight_score(stats, sc):
     """"Check for new records"""
     if stats.score > stats.hight_score:
