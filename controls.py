@@ -49,6 +49,7 @@ def update(bg_color, screen, stats, sc, hero, aliens, bullets):
          bullets: placing the bullet behind the rear hero
     """
     screen.fill(bg_color)
+    pygame.draw.line(screen, (0, 0, 0), (0, 600), (700, 600), width=1)
     sc.show_score()
 
     for bullet in bullets.sprites():
@@ -66,7 +67,6 @@ def disappearing_bullets(screen, stats, sc, aliens, bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    print(len(bullets))
 
     # collision adjustment / 'True' - to remove both the bullet and the alien
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
@@ -103,7 +103,6 @@ def update_aliens(stats, screen, sc, hero, aliens, bullets):
     aliens.update()
     if pygame.sprite.spritecollideany(hero, aliens):
         hero_kill(stats, screen, sc, hero, aliens, bullets)
-        print('!!!!!!!!')
     alien_check(stats, screen, sc, hero, aliens, bullets)
 
 

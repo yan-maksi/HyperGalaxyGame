@@ -12,7 +12,6 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(varibbles.WINDOW_SIZE)
     pygame.display.set_caption("Star Ido Wars")
     bg_color = varibbles.WHITE
-    pygame.draw.line(screen, (0, 0, 0), (0, 10), (700, 10), width=1)
     hero = Hero(screen)
     bullets = Group()
     aliens = Group()
