@@ -7,7 +7,7 @@ from stats import Stats
 import varibbles
 
 
-def run():
+if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode(varibbles.WINDOW_SIZE)
     pygame.display.set_caption("Star Ido Wars")
@@ -29,6 +29,3 @@ def run():
             controls.update(bg_color, screen, stats, sc, hero, aliens, bullets)
             controls.disappearing_bullets(screen, stats, sc, aliens, bullets)
             controls.update_aliens(stats, screen, sc, hero, aliens, bullets)
-
-
-run()

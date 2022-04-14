@@ -44,4 +44,4 @@ class Hero(Sprite):
 
     def create_hero(self):
         """Creates the hero anew after death"""
-        self.center = self.screen_rect.centerx #-----------------------
+        self.center = self.screen_rect.centerx

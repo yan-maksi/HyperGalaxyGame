@@ -49,6 +49,7 @@ def update(bg_color, screen, stats, sc, hero, aliens, bullets):
          bullets: placing the bullet behind the rear hero
     """
     screen.fill(bg_color)
+    pygame.draw.line(screen, (0, 0, 0), (0, 600), (700, 600), width=1)
     sc.show_score()
 
     for bullet in bullets.sprites():
@@ -66,14 +67,15 @@ def disappearing_bullets(screen, stats, sc, aliens, bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    print(len(bullets))
 
     # collision adjustment / 'True' - to remove both the bullet and the alien
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     if collisions:
-        stats.score += 10
+        for aliens in collisions.values():
+            stats.score += 10
         sc.image_score()
         sc.image_heros()
+        chek_hight_score(stats, sc)
 
     # creating a new group of aliens after the death of a player
     if len(aliens) == 0:
@@ -101,7 +103,6 @@ def update_aliens(stats, screen, sc, hero, aliens, bullets):
     aliens.update()
     if pygame.sprite.spritecollideany(hero, aliens):
         hero_kill(stats, screen, sc, hero, aliens, bullets)
-        print('!!!!!!!!')
     alien_check(stats, screen, sc, hero, aliens, bullets)
 
 
@@ -139,3 +140,12 @@ def create_army(screen, aliens):
             alien.rect.y = alien.rect.height + (alien.rect.height * row_number)
             # add a group of aliens to the screen
             aliens.add(alien)
+
+
+def chek_hight_score(stats, sc):
+    """"Check for new records"""
+    if stats.score > stats.hight_score:
+        stats.hight_score = stats.score
+        sc.image_hight_score()
+        with open('hightscore', 'w') as f:
+            f.write(str(stats.hight_score))
