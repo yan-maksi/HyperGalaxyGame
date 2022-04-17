@@ -1,21 +1,22 @@
 import pygame
-import controls
-from hero import Hero
+
+from logics import controls, aliens_controler
+import consts
+from characters.hero import Hero
 from pygame.sprite import Group  # Creates a group of objects
-from scores import Scores
-from stats import Stats
-import varibbles
+from logics.scores import Scores
+from logics.stats import Stats
 
 
-if __name__ == '__main__':
+def main():
     pygame.init()
-    screen = pygame.display.set_mode(varibbles.WINDOW_SIZE)
+    screen = pygame.display.set_mode(consts.WINDOW_SIZE)
     pygame.display.set_caption("Star Ido Wars")
-    bg_color = varibbles.WHITE
+    bg_color = consts.WHITE
     hero = Hero(screen)
     bullets = Group()
     aliens = Group()
-    controls.create_army(screen, aliens)
+    aliens_controler.create_army(screen, aliens)
     stats = Stats()
     sc = Scores(screen, stats)
 
@@ -26,6 +27,12 @@ if __name__ == '__main__':
         if stats.run_game:
             hero.hero_movement()
             bullets.update()
-            controls.update(bg_color, screen, stats, sc, hero, aliens, bullets)
-            controls.disappearing_bullets(screen, stats, sc, aliens, bullets)
-            controls.update_aliens(stats, screen, sc, hero, aliens, bullets)
+            controls.update(bg_color, screen, sc, hero, aliens, bullets)
+            controls.disappearing_bullets(bullets)
+            aliens_controler.collision_adjustment(stats, sc, aliens, bullets)
+            aliens_controler.alien_revival(screen, aliens, bullets)
+            aliens_controler.update_aliens(stats, screen, sc, hero, aliens, bullets)
+
+
+if __name__ == '__main__':
+    main()

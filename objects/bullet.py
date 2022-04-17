@@ -1,12 +1,13 @@
 import pygame
-import varibbles
+import consts
 
 
 class Bullet(pygame.sprite.Sprite):
 
     def __init__(self, screen, hero):
         """
-        Creating bullet motion
+        Creating bullet motion. The bullet should move on the alien from
+        the top of the main character's gun and kill him
         :param screen: this parameter to display the bullet on the screen
         :param hero: so that the bullet is created in the place where our hero is now
         """
@@ -15,7 +16,7 @@ class Bullet(pygame.sprite.Sprite):
         # dimensions of the bullet
         self.rect = pygame.Rect(0, 0, 2, 12)
         # color of the bullet
-        self.color = varibbles.RED
+        self.color = consts.RED
         # bullet speed
         self.speed = 4
         # bullet location

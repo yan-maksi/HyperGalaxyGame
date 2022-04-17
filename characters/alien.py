@@ -2,11 +2,11 @@ import pygame
 
 
 class Alien(pygame.sprite.Sprite):
-    """Creating an alien"""
 
     def __init__(self, screen):
         """
-        mark the basic parameters of the alien
+        mark the basic parameters of the alien. He is the antagonist of the protagonist, he must move on the
+        protagonist in order to kill him or go behind the black line
         :param screen: mark his location
         """
         super(Alien, self).__init__()
@@ -30,5 +30,6 @@ class Alien(pygame.sprite.Sprite):
 
     def update(self):
         """moving aliens to the player"""
-        self.y += 0.1
+        speed_alien = 0.1
+        self.y += speed_alien
         self.rect.y = self.y
