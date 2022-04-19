@@ -1,25 +1,42 @@
-import pygame
+import sys
+import time
 
+import pygame
 from characters.alien import Alien
-from logics.controls import hero_kill
 
 
 def collision_adjustment(stats, sc, aliens, bullets):
-    # collision adjustment / 'True' - to remove both the bullet and the alien
+    """collision adjustment / 'True' - to remove both the bullet and the alien"""
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     if collisions:
         for aliens in collisions.values():
             stats.score += 10
+
         sc.image_score()
         sc.image_heroes()
         check_height_score(stats, sc)
 
 
 def alien_revival(screen, aliens, bullets):
-    # creating a new group of aliens after the death of a player
+    """ creating a new group of aliens after the death of a player"""
     if len(aliens) == 0:
         bullets.empty()
         create_army(screen, aliens)
+
+
+def hero_kill(stats, screen, sc, hero, aliens, bullets):  # hero controller
+    """clash of cannon and army"""
+    if stats.hero_left > 0:
+        stats.hero_left -= 1
+        aliens.empty()
+        sc.image_heroes()
+        bullets.empty()
+        create_army(screen, aliens)
+        hero.create_hero()
+        time.sleep(2)
+    else:
+        stats.run_game = False
+        sys.exit()
 
 
 def update_aliens(stats, screen, sc, hero, aliens, bullets):

@@ -1,11 +1,12 @@
+import sys
+import time
 import pygame
 from pygame.sprite import Sprite
 
 
 class Hero(Sprite):
-
     def __init__(self, screen):
-        """Creating the logic of the main character"""
+        """The main character"""
         super(Hero, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('images/Game_person.png')
@@ -45,3 +46,6 @@ class Hero(Sprite):
     def create_hero(self):
         """Creates the hero anew after death"""
         self.center = self.screen_rect.centerx
+
+
+

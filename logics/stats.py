@@ -1,8 +1,8 @@
 class Stats:
-    """Tracking player statistics (lives)"""
-
     def __init__(self):
         """Displaying statistics on the screen"""
+        self.score = 0
+        self.hero_left = 2
         self.reset_stats()
         self.run_game = True
         try:

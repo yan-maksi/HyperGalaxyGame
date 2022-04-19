@@ -1,11 +1,15 @@
 import pygame
-
-from logics import controls, aliens_controler
 import consts
-from characters.hero import Hero
-from pygame.sprite import Group  # Creates a group of objects
-from logics.scores import Scores
+
 from logics.stats import Stats
+from pygame.sprite import Group
+from logics.scores import Scores
+from characters.hero import Hero
+
+from objects import bullet
+from logics import controls
+from logics import update_screen
+from logics import aliens_controler
 
 
 def main():
@@ -27,8 +31,8 @@ def main():
         if stats.run_game:
             hero.hero_movement()
             bullets.update()
-            controls.update(bg_color, screen, sc, hero, aliens, bullets)
-            controls.disappearing_bullets(bullets)
+            update_screen.update(bg_color, screen, sc, hero, aliens, bullets)
+            bullet.disappearing_bullets(bullets)
             aliens_controler.collision_adjustment(stats, sc, aliens, bullets)
             aliens_controler.alien_revival(screen, aliens, bullets)
             aliens_controler.update_aliens(stats, screen, sc, hero, aliens, bullets)
