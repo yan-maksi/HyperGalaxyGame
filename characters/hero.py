@@ -25,6 +25,7 @@ class Hero(Sprite):
         # character movement buttons
         self.mright = False
         self.mleft = False
+        self.pixels_move = 2.5
 
     def hero_view(self):
         """display the hero on the screen"""
@@ -32,14 +33,13 @@ class Hero(Sprite):
 
     def hero_movement(self):
         """character relocation update"""
-
         # character move RIGHT
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.center += 2.5
+            self.center += self.pixels_move
 
         # character move LEFT
         if self.mleft and self.rect.left > 0:
-            self.center -= 2.5
+            self.center -= self.pixels_move
 
         self.rect.centerx = self.center
 

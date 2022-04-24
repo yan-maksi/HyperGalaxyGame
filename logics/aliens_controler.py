@@ -1,6 +1,5 @@
 import sys
 import time
-
 import pygame
 from characters.alien import Alien
 

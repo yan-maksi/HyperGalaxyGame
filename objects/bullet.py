@@ -6,6 +6,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, screen, hero) :
         """
         Bullet motion
+
         :param screen: this parameter to display the bullet on the screen
         :param hero_location: x,y of the hero
         """
@@ -27,14 +28,3 @@ class Bullet(pygame.sprite.Sprite):
         self.y -= self.speed
         self.rect.y = self.y
 
-    def draw_bullet(self):
-        """drawing a bullet on the screen"""
-        pygame.draw.rect(self.screen, self.color, self.rect)
-
-
-def disappearing_bullets(bullets):  # bullet controller
-    """update bullet positions (bullets will disappear when outside the screen)"""
-    bullets.update()
-    for bullet in bullets.copy():
-        if bullet.rect.bottom <= 0:
-            bullets.remove(bullet)
