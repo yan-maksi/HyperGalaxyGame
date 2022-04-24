@@ -3,13 +3,12 @@ import consts
 
 
 class Bullet(pygame.sprite.Sprite):
-
-    def __init__(self, screen, hero):
+    def __init__(self, screen, hero) :
         """
-        Creating bullet motion. The bullet should move on the alien from
-        the top of the main character's gun and kill him
+        Bullet motion
+
         :param screen: this parameter to display the bullet on the screen
-        :param hero: so that the bullet is created in the place where our hero is now
+        :param hero_location: x,y of the hero
         """
         super(Bullet, self).__init__()
         self.screen = screen
@@ -29,6 +28,3 @@ class Bullet(pygame.sprite.Sprite):
         self.y -= self.speed
         self.rect.y = self.y
 
-    def draw_bullet(self):
-        """drawing a bullet on the screen"""
-        pygame.draw.rect(self.screen, self.color, self.rect)
