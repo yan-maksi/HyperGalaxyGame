@@ -16,7 +16,7 @@ def main():
     stats = Stats()
     sc = ScreenObjects(pygame.display.set_mode(consts.WINDOW_SIZE), stats)
     bg_color = consts.WHITE
-    hero = Hero(sc.screen)
+    hero = Hero(sc.screen.get_rect())
     bullets = Group()
     aliens = Group()
     aliens_controler.create_army(sc.screen, aliens)

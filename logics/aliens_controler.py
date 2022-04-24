@@ -13,7 +13,7 @@ def collision_adjustment(stats, sc, aliens, bullets):
 
         sc.image_score()
         sc.image_heroes()
-        check_height_score(stats, sc)
+        stats.check_height_score(sc)
 
 
 def alien_revival(screen, aliens, bullets):
@@ -80,12 +80,3 @@ def create_army(screen, aliens):
             alien.rect.y = alien.rect.height + (alien.rect.height * row_number)
             # add a group of aliens to the screen
             aliens.add(alien)
-
-
-def check_height_score(stats, sc):
-    """"Check for new records"""
-    if stats.score > stats.height_score:
-        stats.height_score = stats.score
-        sc.image_height_score()
-        with open('../highest_score.txt', 'w') as f:
-            f.write(str(stats.height_score))

@@ -1,19 +1,16 @@
-import sys
-import time
 import pygame
 from pygame.sprite import Sprite
 
 
 class Hero(Sprite):
-    def __init__(self, screen):
+    def __init__(self, screen_rect):
         """The main character"""
         super(Hero, self).__init__()
-        self.screen = screen
         self.image = pygame.image.load('images/Game_person.png')
 
         # transform the character on the rectangle of the screen
         self.rect = self.image.get_rect()
-        self.screen_rect = screen.get_rect()
+        self.screen_rect = screen_rect
 
         # make the movement smoother, so you can put a float number
         self.center = float(self.screen_rect.centerx)
@@ -26,10 +23,6 @@ class Hero(Sprite):
         self.mright = False
         self.mleft = False
         self.pixels_move = 2.5
-
-    def hero_view(self):
-        """display the hero on the screen"""
-        self.screen.blit(self.image, self.rect)
 
     def hero_movement(self):
         """character relocation update"""

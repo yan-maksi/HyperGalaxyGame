@@ -89,9 +89,13 @@ class ScreenObjects:
         # drawing imagen on the screen
         self.draw_images(bullets)
 
-        hero.hero_view()
+        self.draw_hero(hero)
         aliens.draw(self.screen)
         pygame.display.flip()
+
+    def draw_hero(self, hero):
+        """display the hero on the screen"""
+        self.screen.blit(hero.image, hero.rect)
 
     def draw_bullet(self, bullets):
         """drawing a bullet on the screen"""

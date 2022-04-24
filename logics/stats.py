@@ -17,3 +17,11 @@ class Stats:
         """stats changing during the game"""
         self.hero_left = 2
         self.score = 0
+
+    def check_height_score(self, sc):
+        """"Check for new records"""
+        if self.score > self.height_score:
+            self.height_score = self.score
+            sc.image_height_score()
+            with open('../highest_score.txt', 'w') as f:
+                f.write(str(self.height_score))
